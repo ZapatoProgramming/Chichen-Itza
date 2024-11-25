@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Modificación de Zona Geográfica</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Modificación de Zona Geográfica</h2>
+        <form id="modificar-zona">
+            <label for="id-zona">ID de la Zona:</label>
+            <input type="text" id="id-zona" name="id-zona" required>
+
+            <label for="nombre">Nombre de la Zona:</label>
+            <input type="text" id="nombre" name="nombre">
+
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" rows="3"></textarea>
+
+            <label for="restriccion-rol">Restricción de Rol:</label>
+            <select id="restriccion-rol" name="restriccion-rol">
+                <option value="visitante">Visitante</option>
+                <option value="guia">Guía</option>
+                <option value="personal">Personal Autorizado</option>
+            </select>
+
+            <button type="submit" class="submit-button">Guardar Cambios</button>
+        </form>
+    </div>
+</body>
+</html>
