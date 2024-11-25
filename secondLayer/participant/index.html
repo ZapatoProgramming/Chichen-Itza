@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal de Participantes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a la Plataforma de Recorridos Virtuales</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#recorridos-disponibles">Recorridos Disponibles</a></li>
+            <li><a href="#mis-recorridos">Mis Recorridos</a></li>
+            <li><a href="#mi-perfil">Mi Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Sección de Recorridos Disponibles -->
+        <section id="recorridos-disponibles">
+            <h2>Recorridos Disponibles</h2>
+            <p>Selecciona un recorrido para unirte y explorar.</p>
+            <ul class="recorridos-lista">
+                <li>
+                    <h3>Recorrido Histórico</h3>
+                    <p>Duración: 90 minutos</p>
+                    <button class="btn-unirse">Unirse al Recorrido</button>
+                </li>
+                <li>
+                    <h3>Tour Nocturno</h3>
+                    <p>Duración: 60 minutos</p>
+                    <button class="btn-unirse">Unirse al Recorrido</button>
+                </li>
+                <!-- Agrega más recorridos según sea necesario -->
+            </ul>
+        </section>
+
+        <!-- Sección de Mis Recorridos -->
+        <section id="mis-recorridos">
+            <h2>Mis Recorridos</h2>
+            <p>Aquí puedes ver los recorridos en los que estás inscrito.</p>
+            <ul class="recorridos-lista">
+                <li>
+                    <h3>Tour por el Templo de los Guerreros</h3>
+                    <p>Fecha: 20 de Noviembre, 2024</p>
+                    <button class="btn-ver">Ver Detalles</button>
+                </li>
+                <!-- Agrega más recorridos si el usuario está inscrito en varios -->
+            </ul>
+        </section>
+
+        <!-- Sección de Mi Perfil -->
+        <section id="mi-perfil">
+            <h2>Mi Perfil</h2>
+            <p>Información de perfil y configuración.</p>
+            <form id="perfil-form">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" value="Nombre del Participante">
+
+                <label for="avatar">Avatar:</label>
+                <select id="avatar" name="avatar">
+                    <option value="avatar1">Avatar 1</option>
+                    <option value="avatar2">Avatar 2</option>
+                    <option value="avatar3">Avatar 3</option>
+                </select>
+
+                <button type="submit" class="btn-guardar">Guardar Cambios</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Plataforma de Recorridos Virtuales. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
