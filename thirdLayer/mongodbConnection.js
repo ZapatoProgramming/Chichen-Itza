@@ -1,24 +1,26 @@
-const { MongoClient } = require('mongodb');
 
-const uri = "mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://danielmaimone03:_tf6MSe7mW9vapX@chichenitza.odfli.mongodb.net/?retryWrites=true&w=majority&appName=ChichenItza";
 
-const client = new MongoClient(uri);
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
 
 async function run() {
-    try {
-        await client.connect();
-        console.log("Conectado a MongoDB!");
-
-        const database = client.db('miBaseDeDatos');
-        const collection = database.collection('miColeccion');
-
-        // Consulta ejemplo
-        const documentos = await collection.find({ activo: true }).toArray();
-        console.log(documentos);
-
-    } finally {
-        await client.close();
-    }
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
 }
-
-run().catch(console.error);
+run().catch(console.dir);
