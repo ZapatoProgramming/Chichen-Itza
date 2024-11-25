@@ -9,32 +9,24 @@
     <div class="form-container">
         <h2>Modificación de Participante</h2>
         <form id="modificar-participante">
-            <label for="id-participante">ID del Participante:</label>
-            <input type="text" id="id-participante" name="id-participante" required>
 
+            <label for="nombre">id:</label>
+            <input type="text" id="id" name="id">
+
+            
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre">
-
-            <label for="rol">Rol:</label>
-            <select id="rol" name="rol">
-                <option value="visitante">Visitante</option>
-                <option value="guia">Guía de Turista</option>
-            </select>
+            <input type="text" id="name" name="name">
 
             <label for="avatar">Avatar:</label>
             <select id="avatar" name="avatar">
                 <option value="avatar1">Avatar 1</option>
                 <option value="avatar2">Avatar 2</option>
-            </select>
-
-            <label for="recorrido">Recorrido:</label>
-            <select id="recorrido" name="recorrido">
-                <option value="recorrido1">Recorrido 1</option>
-                <option value="recorrido2">Recorrido 2</option>
+                <option value="avatar3">Avatar 3</option>
             </select>
 
             <button type="submit" class="submit-button">Guardar Cambios</button>
         </form>
     </div>
+    <script src="modifyParticipant.js"></script>
 </body>
 </html>
