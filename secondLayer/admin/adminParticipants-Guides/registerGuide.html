@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Alta de Guía de Turista</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Alta de Guía de Turista</h2>
+        <form id="alta-guia">
+            <label for="nombre">Nombre del Guía:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="zona">Zona Asignada:</label>
+            <select id="zona" name="zona" required>
+                <option value="zona1">Zona 1</option>
+                <option value="zona2">Zona 2</option>
+                <!-- Agrega más opciones según las zonas disponibles -->
+            </select>
+
+            <label for="recorrido">Recorrido:</label>
+            <select id="recorrido" name="recorrido" required>
+                <option value="recorrido1">Recorrido 1</option>
+                <option value="recorrido2">Recorrido 2</option>
+                <!-- Agrega más opciones según los recorridos disponibles -->
+            </select>
+
+            <label for="info-adicional">Información Adicional:</label>
+            <textarea id="info-adicional" name="info-adicional" rows="3"></textarea>
+
+            <button type="submit" class="submit-button">Registrar Guía</button>
+        </form>
+    </div>
+</body>
+</html>
