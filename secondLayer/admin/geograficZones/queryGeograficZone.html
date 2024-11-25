@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta de Zona Geográfica</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de Recorridos</h1>
+    </header>
+
+    <main>
+        <section id="recorridos-lista">
+            <h2>Recorridos Disponibles</h2>
+            <ul id="lista-recorridos">
+                <!-- Aquí se cargarán los recorridos dinámicamente -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Plataforma de Recorridos Virtuales. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Aquí se implementarán las funciones para cargar datos dinámicamente más adelante.
+        document.addEventListener('DOMContentLoaded', () => {
+            const listaRecorridos = document.getElementById('lista-recorridos');
+
+            // Ejemplo de zonas predefinidas (puedes eliminarlo más adelante)
+            const ejemplo = `
+                <li>
+                    <h3>Nombre: Chichén Itzá</h3>
+                    <p>Descripción: Este es un recorrido a Chichén Itzá donde... 
+                                    El recorrido dura aproximadamente...
+                                    Es necesario llevar algún equipo (opcional), por ejemplo...</p>
+                </li>
+                <li>
+                    <h3>Nombre: Chichén Itzá 2</h3>
+                    <p>Descripción: Este es un recorrido a Chichén Itzá 2 donde... 
+                                    El recorrido dura aproximadamente...
+                                    Es necesario llevar algún equipo (opcional), por ejemplo...</p>
+                </li>
+            `;
+            listaRecorridos.innerHTML = ejemplo;
+        });
+    </script>
+</body>
+</html>
