@@ -8,7 +8,7 @@ document.getElementById('participant-form').addEventListener('submit', async fun
         adminPassword: 'admin123', // Reemplaza con la contraseña del administrador
         newUser: {
             name: formData.get('name'),
-            role: formData.get('role'),
+            role: 'participant',
             avatar: formData.get('avatar'),
             username: formData.get('name').toLowerCase().replace(/\s+/g, ''), // Genera un username
             password: 'defaultpassword' // Contraseña predeterminada (puedes pedirla en el formulario)
@@ -38,3 +38,4 @@ document.getElementById('participant-form').addEventListener('submit', async fun
         alert('Ocurrió un error al procesar la solicitud');
     }
 });
+
