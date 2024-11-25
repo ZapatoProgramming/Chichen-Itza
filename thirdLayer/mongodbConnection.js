@@ -1,13 +1,13 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "";
+const uri = "mongodb+srv://danielmaimone03:_tf6MSe7mW9vapX@chichenitza.odfli.mongodb.net/?retryWrites=true&w=majority&appName=ChichenItza"; 
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+// Crea un cliente MongoClient con la API estable
 const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+    }
 });
 
 async function connectToDB() {
@@ -17,7 +17,7 @@ async function connectToDB() {
         return client;
     } catch (error) {
         console.error("Error:", error);
-    } 
+    }
 }
 
 module.exports = connectToDB;

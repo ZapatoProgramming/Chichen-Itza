@@ -2,11 +2,11 @@ const connectToDB = require('./mongodbConnection.js');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { MongoClient } = require('mongodb');
 
 const app = express();
 const PORT = 3001;
 let db;
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -71,4 +71,3 @@ app.post('/api/users', async (req, res) => {
 
 // Inicializa la conexión y el servidor
 initializeServer();
-
