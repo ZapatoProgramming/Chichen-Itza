@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Recorridos</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de Recorridos</h1>
+    </header>
+
+    <main>
+        <section id="recorridos-lista">
+            <h2>Recorridos Disponibles</h2>
+            <ul id="lista-recorridos">
+                <!-- Aquí se cargarán los recorridos dinámicamente -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Plataforma de Recorridos Virtuales. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Aquí se implementarán las funciones para cargar datos dinámicamente más adelante.
+        document.addEventListener('DOMContentLoaded', () => {
+            const listaRecorridos = document.getElementById('lista-recorridos');
+
+            // Ejemplo de recorrido predefinido (puedes eliminarlo más adelante)
+            const ejemplo = `
+                <li>
+                    <h3>Recorrido Ejemplo</h3>
+                    <p>Duración: 60 minutos</p>
+                    <p>fecha: 60 minutos</p>
+                    <p>Guías: Juan Pérez, Juan Pérez, Juan Pérez</p>
+                    <p>Zonas: Chichen Itza</p>
+                </li>
+                <li>
+                    <h3>Recorrido Ejemplo 2</h3>
+                    <p>Duración: 60 minutos</p>
+                    <p>fecha: 60 minutos</p>
+                    <p>Guías: Juan Pérez, Juan Pérez, Juan Pérez</p>
+                    <p>Zonas: Chichen Itza</p>
+                </li>
+            `;
+            listaRecorridos.innerHTML = ejemplo;
+        });
+    </script>
+</body>
+</html>

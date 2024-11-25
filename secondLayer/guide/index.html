@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal de Guías</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <header>
+        <h1>Bienvenido, Guía de Turista</h1>
+    </header>
+    <main>
+        <!-- Sección de Recorridos Asignados -->
+        <section id="recorridos-asignados">
+            <h2>Recorridos Asignados</h2>
+            <p>Aquí puedes ver los recorridos que lideras.</p>
+            <ul class="recorridos-lista">
+                <li>
+                    <h3>EJEMPLO - Tour Histórico</h3>
+                    <p>Fecha: 20 de Noviembre, 2024</p>
+                    <button class="btn-ver">Ver Detalles</button>
+                </li>
+                <li>
+                    <h3>EJEMPLO - Recorrido Nocturno</h3>
+                    <p>Fecha: 25 de Noviembre, 2024</p>
+                    <button class="btn-ver">Ver Detalles</button>
+                </li>
+                <!-- Agrega más recorridos según sea necesario -->
+            </ul>
+        </section>
+
+        <!-- Sección de Zonas para Guiar -->
+        <section id="zonas-para-guiar">
+            <h2>Zonas Asignadas para Guiar</h2>
+            <p>Estas son las zonas que debes cubrir en cada recorrido.</p>
+            <ul class="zonas-lista">
+                <li>
+                    <h3>EJEMPLO - Templo de los Guerreros</h3>
+                    <p>Asignado en: Tour Histórico</p>
+                    <button class="btn-ver-zona">Ver Información</button>
+                </li>
+                <li>
+                    <h3>EJEMPLO - El Observatorio</h3>
+                    <p>Asignado en: Recorrido Nocturno</p>
+                    <button class="btn-ver-zona">Ver Información</button>
+                </li>
+                <!-- Agrega más zonas según sea necesario -->
+            </ul>
+        </section>
+
+        <!-- Sección de Comunicación con Participantes -->
+        <section id="comunicacion">
+            <h2>Comunicación con Participantes</h2>
+            <p>Envía mensajes o coordina detalles con los participantes de tus recorridos.</p>
+            <form id="comunicacion-form">
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí..."></textarea>
+                <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Plataforma de Recorridos Virtuales. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

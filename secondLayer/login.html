@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Plataforma de Recorridos Virtuales</h1>
+    </header>
+
+    <main>
+            <div class="login-container">
+                <form id="login-form" action="/login" method="POST">
+                    <h2>Inicio de Sesión</h2>
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="username" required>
+            
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+            
+                    <button type="submit" class="submit-button">Iniciar Sesión</button>
+                </form>
+            </div>            
+            </form>
+            <p id="error-message" style="color: red; display: none;">Credenciales inválidas</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Plataforma de Recorridos Virtuales. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Mostrar mensaje de error si hay redirección fallida
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('error')) {
+            document.getElementById('error-message').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

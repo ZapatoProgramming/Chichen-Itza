@@ -1,0 +1,238 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos generales */
+body {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+/* Navegación */
+nav ul {
+    display: flex;
+    list-style: none;
+    background-color: #333;
+    width: 100%;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+/* Main content */
+main {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 20px;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+form h2 {
+    font-size: 20px; /* Tamaño del texto */
+    color: #007bff; /* Color azul para resaltar */
+    margin-bottom: 25px; /* Aumenta la separación con los campos del formulario */
+}
+
+/* Listas de recorridos y zonas */
+.recorridos-lista, .zonas-lista {
+    list-style: none;
+    padding: 0;
+}
+
+.recorridos-lista li, .zonas-lista li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.recorridos-lista li h3, .zonas-lista li h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.recorridos-lista li p, .zonas-lista li p {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+/* Botones */
+button, .btn-ver, .btn-ver-zona, .btn-enviar, .submit-button, .btn-management {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-gestion {
+    margin-top: 15px;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.btn-ver, .btn-ver-zona {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-ver:hover, .btn-ver-zona:hover {
+    background-color: #0056b3;
+}
+
+.btn-enviar {
+    background-color: #28a745;
+    color: #fff;
+    width: 100%;
+}
+
+.btn-enviar:hover {
+    background-color: #218838;
+}
+
+/* Formulario */
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Inputs en formulario */
+form input[type="text"],
+form input[type="password"],
+form input[type="number"],
+form input[type="datetime-local"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="number"]:focus,
+form input[type="datetime-local"]:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Ajustar el botón dentro de formularios */
+form button, 
+form .submit-button {
+    width: 100%; /* El botón ocupa todo el ancho del formulario */
+    margin-top: 15px; /* Añade un margen para separarlo de los campos */
+    padding: 10px; /* Espaciado interno */
+    background-color: #007bff; /* Color azul del botón */
+    color: #fff; /* Color del texto */
+    font-size: 16px; /* Tamaño del texto */
+    border: none; /* Sin bordes */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Icono de mano para clic */
+    transition: background-color 0.3s; /* Animación suave al pasar el cursor */
+}
+
+form button:hover, 
+form .submit-button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el cursor */
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    margin-top: 50px; /* Ajusta este valor para controlar la distancia desde arriba */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    background-color: #f4f6f8; /* Fondo uniforme */
+}
+
+/* Formulario */
+form {
+    width: 100%;
+    max-width: 400px; /* Máximo ancho para pantallas grandes */
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para resaltar */
+    text-align: center; /* Centra el texto */
+}

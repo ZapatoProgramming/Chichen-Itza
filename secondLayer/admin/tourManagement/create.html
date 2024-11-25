@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Recorrido</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Registro de Recorrido</h2>
+        <form id="registrar-recorrido">
+            <label for="nombre">Nombre del Recorrido:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="duracion">Duración (minutos):</label>
+            <input type="number" id="duracion" name="duracion" required>
+
+            <label for="fecha">Fecha y Hora:</label>
+            <input type="datetime-local" id="fecha" name="fecha" required>
+
+            <label for="guias">Guía(s):</label>
+            <select id="guias" name="guias" multiple required></select>
+            
+            <label for="zonas">Zonas:</label>
+            <select id="zonas" name="zonas" multiple required></select>            
+
+            <button type="submit" class="submit-button">Crear Recorrido</button>
+        </form>
+    </div>
+</body>
+</html>
