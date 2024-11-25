@@ -2,19 +2,19 @@ const connectToDB = require('./mongodbConnection.js');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { MongoClient } = require('mongodb');
 
 const app = express();
 const PORT = 3001;
 let db;
 app.use(cors());
 app.use(bodyParser.json());
+let clientValue = null;
 
 // Conectar a la base de datos antes de iniciar el servidor
 async function initializeServer() {
     try {
-        const client = await connectToDB();
-        db = client.db("ChichenItza"); // Cambia por el nombre de tu base de datos
+        clientValue = await connectToDB();
+        db = clientValue.db("ChichenItza"); // Cambia por el nombre de tu base de datos
         console.log("Conexión a la base de datos establecida");
 
         // Inicia el servidor Express
@@ -68,6 +68,80 @@ app.post('/api/users', async (req, res) => {
         res.status(500).json({ success: false, message: 'Error interno del servidor' });
     }
 });
+
+const { modifyDocument } = require('./methods.js');
+
+//Endpoint para modificar un participante
+app.put('/api/participantes', async (req, res) => {
+    const { id, name, avatar } = req.body;
+
+    try {
+        const updatedFields = {};
+        if (name) updatedFields.name = name;
+        if (avatar) updatedFields.avatar = avatar;
+
+        const resultado = await modifyDocument(
+            clientValue,               // Cliente MongoDB conectado
+            'ChichenItza',        // Nombre de la base de datos
+            'users',              // Nombre de la colección
+            id,                   // ID del participante
+            updatedFields         // Campos a actualizar
+        );
+
+        if (resultado.success) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(404).json(resultado);
+        }
+    } catch (error) {
+        console.error('Error al actualizar el participante:', error);
+        res.status(500).json({ success: false, message: 'Error interno del servidor' });
+    }
+});
+
+// Endpoint para obtener la lista de participantes
+app.get('/api/participantes', async (req, res) => {
+    try {
+        const usuarios = db.collection('users'); // Colección de usuarios
+        const participantes = await usuarios.find({ role: 'participant' }).toArray(); // Filtra por rol 'participant'
+
+        res.status(200).json(participantes); // Envía la lista de participantes como respuesta JSON
+    } catch (error) {
+        console.error('Error al obtener la lista de participantes:', error);
+        res.status(500).json({ success: false, message: 'Error al obtener la lista de participantes' });
+    }
+});
+
+const { ObjectId } = require('mongodb');
+
+//delete a participant
+app.delete('/api/participantes/:id', async (req, res) => {
+    const { id } = req.params; // Obtén el ID del participante de los parámetros de la URL
+
+    try {
+        const usuarios = db.collection('users'); // Colección de usuarios
+
+        // Valida que el ID sea un ObjectId válido
+        if (!ObjectId.isValid(id)) {
+            return res.status(400).json({ success: false, message: 'ID inválido' });
+        }
+
+        // Elimina el participante
+        const resultado = await usuarios.deleteOne({ _id: new ObjectId(id) });
+
+        if (resultado.deletedCount === 0) {
+            return res.status(404).json({ success: false, message: 'Participante no encontrado' });
+        }
+
+        res.status(200).json({ success: true, message: 'Participante eliminado exitosamente' });
+    } catch (error) {
+        console.error('Error al eliminar el participante:', error);
+        res.status(500).json({ success: false, message: 'Error interno del servidor' });
+    }
+});
+
+
+
 
 // Inicializa la conexión y el servidor
 initializeServer();
