@@ -141,5 +141,28 @@ app.delete('/api/participantes/:id', async (req, res) => {
     }
 });
 
+// Endpoint para crear guia
+app.post('/api/guias', async (req, res) => {
+    const { nombre, role } = req.body; // Obtén el nombre del cuerpo de la solicitud
+
+    try {
+        // Valida que el nombre no esté vacío
+        if (!nombre) {
+            return res.status(400).json({ success: false, message: 'El nombre es obligatorio' });
+        }
+
+        const guias = db.collection('users'); // Colección para almacenar guías
+
+        // Inserta el nuevo guía en la base de datos
+        const resultado = await guias.insertOne({ nombre, role });
+
+        res.status(201).json({ success: true, message: 'Guía registrado exitosamente', id: resultado.insertedId });
+    } catch (error) {
+        console.error('Error al registrar el guía:', error);
+        res.status(500).json({ success: false, message: 'Error interno del servidor' });
+    }
+});
+
+
 // Inicializa la conexión y el servidor
 initializeServer();
