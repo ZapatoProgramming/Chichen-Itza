@@ -2,35 +2,38 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Alta de Guía de Turista</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Guia</title>
     <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
     <div class="form-container">
-        <h2>Alta de Guía de Turista</h2>
-        <form id="alta-guia">
-            <label for="nombre">Nombre del Guía:</label>
-            <input type="text" id="nombre" name="nombre" required>
+        <h2>Registro de Guias</h2>
+        <form id="guide-form">
+            <!-- Nombre del participante -->
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required placeholder="Ingrese el nombre del guia">
+            </div>
 
-            <label for="zona">Zona Asignada:</label>
-            <select id="zona" name="zona" required>
-                <option value="zona1">Zona 1</option>
-                <option value="zona2">Zona 2</option>
-                <!-- Agrega más opciones según las zonas disponibles -->
-            </select>
-
-            <label for="recorrido">Recorrido:</label>
-            <select id="recorrido" name="recorrido" required>
-                <option value="recorrido1">Recorrido 1</option>
-                <option value="recorrido2">Recorrido 2</option>
-                <!-- Agrega más opciones según los recorridos disponibles -->
-            </select>
-
-            <label for="info-adicional">Información Adicional:</label>
-            <textarea id="info-adicional" name="info-adicional" rows="3"></textarea>
-
-            <button type="submit" class="submit-button">Registrar Guía</button>
+            <!-- Selección de Avatar -->
+            <div class="form-group">
+                <label for="avatar">Avatar:</label>
+                <select id="avatar" name="avatar" required>
+                    <option value="">Seleccione un avatar</option>
+                    <option value="avatar1">Avatar 1</option>
+                    <option value="avatar2">Avatar 2</option>
+                    <option value="avatar3">Avatar 3</option>
+                </select>
+            </div>
+            
+            <!-- Botones de acción -->
+            <div class="form-buttons">
+                <button type="submit" class="submit-button">Guardar</button>
+                <button type="reset" class="reset-button">Limpiar</button>
+            </div>
         </form>
     </div>
 </body>
+<script src="registerGuide.js"></script>
 </html>
