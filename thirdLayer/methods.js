@@ -7,7 +7,6 @@ async function createDocument(client, databaseName, collectionName, document) {
         const collection = database.collection(collectionName); // Colección
 
         const resultado = await collection.insertOne(document);
-        console.log(`Documento insertado en '${collectionName}' con ID: ${resultado.insertedId}`);
 
         return resultado.insertedId; // Retorna el ID del documento insertado
     } catch (error) {

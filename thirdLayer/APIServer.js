@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3001;
 let db;
+
 app.use(cors());
 app.use(bodyParser.json());
 let clientValue = null;
@@ -145,4 +146,3 @@ app.delete('/api/participantes/:id', async (req, res) => {
 
 // Inicializa la conexión y el servidor
 initializeServer();
-
