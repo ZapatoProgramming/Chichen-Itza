@@ -141,8 +141,5 @@ app.delete('/api/participantes/:id', async (req, res) => {
     }
 });
 
-
-
-
 // Inicializa la conexión y el servidor
 initializeServer();
