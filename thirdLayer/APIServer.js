@@ -113,6 +113,19 @@ app.get('/api/participantes', async (req, res) => {
     }
 });
 
+// Endpoint para obtener la lista de guias
+app.get('/api/guias', async (req, res) => {
+    try {
+        const usuarios = db.collection('users'); // Colección de usuarios
+        const participantes = await usuarios.find({ role: 'guide' }).toArray(); // Filtra por rol 'participant'
+
+        res.status(200).json(participantes); // Envía la lista de participantes como respuesta JSON
+    } catch (error) {
+        console.error('Error al obtener la lista de participantes:', error);
+        res.status(500).json({ success: false, message: 'Error al obtener la lista de participantes' });
+    }
+});
+
 const { ObjectId } = require('mongodb');
 
 //delete a participant

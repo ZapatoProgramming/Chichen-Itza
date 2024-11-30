@@ -28,7 +28,7 @@ document.getElementById('guide-form').addEventListener('submit', async function 
         const result = await response.json();
 
         if (response.ok) {
-            alert(`Usuario creado exitosamente con ID: ${result.insertedId}`);
+            alert(`Guia creado exitosamente con ID: ${result.insertedId}`);
             this.reset(); // Limpia el formulario
         } else {
             alert(`Error: ${result.message}`);
