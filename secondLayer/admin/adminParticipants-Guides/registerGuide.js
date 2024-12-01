@@ -30,6 +30,7 @@ document.getElementById('guide-form').addEventListener('submit', async function 
         if (response.ok) {
             alert(`Guia creado exitosamente con ID: ${result.insertedId}`);
             this.reset(); // Limpia el formulario
+            window.location.href = '/admin/index.html';
         } else {
             alert(`Error: ${result.message}`);
         }

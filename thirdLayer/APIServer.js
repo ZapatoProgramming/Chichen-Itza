@@ -72,7 +72,7 @@ app.post('/api/users', async (req, res) => {
 
 const { modifyDocument } = require('./methods.js');
 
-//Endpoint para modificar un participante
+//Endpoint para modificar un Usuario
 app.put('/api/participantes', async (req, res) => {
     const { id, name, avatar } = req.body;
 
@@ -95,7 +95,7 @@ app.put('/api/participantes', async (req, res) => {
             res.status(404).json(resultado);
         }
     } catch (error) {
-        console.error('Error al actualizar el participante:', error);
+        console.error('Error al actualizar el Usuario:', error);
         res.status(500).json({ success: false, message: 'Error interno del servidor' });
     }
 });
@@ -126,6 +126,29 @@ app.get('/api/guias', async (req, res) => {
     }
 });
 
+app.get('/api/participantes/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        // Valida si el ID es un ObjectId válido
+        if (!ObjectId.isValid(id)) {
+            return res.status(400).json({ success: false, message: 'ID inválido' });
+        }
+
+        const participante = await db.collection('users').findOne({ _id: new ObjectId(id) });
+
+        if (!participante) {
+            return res.status(404).json({ success: false, message: 'Participante no encontrado' });
+        }
+
+        res.status(200).json(participante);
+    } catch (error) {
+        console.error('Error al obtener el participante:', error);
+        res.status(500).json({ success: false, message: 'Error interno del servidor' });
+    }
+});
+
+
 const { ObjectId } = require('mongodb');
 
 //delete a participant
@@ -144,12 +167,12 @@ app.delete('/api/participantes/:id', async (req, res) => {
         const resultado = await usuarios.deleteOne({ _id: new ObjectId(id) });
 
         if (resultado.deletedCount === 0) {
-            return res.status(404).json({ success: false, message: 'Participante no encontrado' });
+            return res.status(404).json({ success: false, message: 'Usuario no encontrado' });
         }
 
-        res.status(200).json({ success: true, message: 'Participante eliminado exitosamente' });
+        res.status(200).json({ success: true, message: 'Usuario eliminado exitosamente' });
     } catch (error) {
-        console.error('Error al eliminar el participante:', error);
+        console.error('Error al eliminar el Usuario:', error);
         res.status(500).json({ success: false, message: 'Error interno del servidor' });
     }
 });

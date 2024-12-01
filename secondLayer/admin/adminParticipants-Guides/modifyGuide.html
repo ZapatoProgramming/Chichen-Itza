@@ -2,36 +2,30 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Modificación de Guía de Turista</title>
+    <title>Modificación de Guia</title>
     <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
     <div class="form-container">
-        <h2>Modificación de Guía de Turista</h2>
+        <h2>Modificación de Guia</h2>
         <form id="modificar-guia">
-            <label for="id-guia">ID del Guía:</label>
-            <input type="text" id="id-guia" name="id-guia" required>
 
-            <label for="nombre">Nombre del Guía:</label>
-            <input type="text" id="nombre" name="nombre">
+            <label for="id">ID:</label>
+            <p id="id-display" style="font-weight: bold; margin-bottom: 10px;"></p>
 
-            <label for="zona">Zona Asignada:</label>
-            <select id="zona" name="zona">
-                <option value="zona1">Zona 1</option>
-                <option value="zona2">Zona 2</option>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" placeholder="Ingrese el nombre">
+
+            <label for="avatar">Avatar:</label>
+            <select id="avatar" name="avatar">
+                <option value="avatar1">Avatar 1</option>
+                <option value="avatar2">Avatar 2</option>
+                <option value="avatar3">Avatar 3</option>
             </select>
-
-            <label for="recorrido">Recorrido:</label>
-            <select id="recorrido" name="recorrido">
-                <option value="recorrido1">Recorrido 1</option>
-                <option value="recorrido2">Recorrido 2</option>
-            </select>
-
-            <label for="info-adicional">Información Adicional:</label>
-            <textarea id="info-adicional" name="info-adicional" rows="3"></textarea>
 
             <button type="submit" class="submit-button">Guardar Cambios</button>
         </form>
     </div>
+    <script src="modifyGuide.js"></script>
 </body>
 </html>

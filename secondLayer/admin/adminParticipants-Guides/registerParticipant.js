@@ -4,8 +4,8 @@ document.getElementById('participant-form').addEventListener('submit', async fun
     // Recopila los datos del formulario
     const formData = new FormData(this);
     const data = {
-        adminUsername: 'admin', // Reemplaza con el usuario administrador autenticado
-        adminPassword: 'admin123', // Reemplaza con la contraseña del administrador
+        adminUsername: 'admin',
+        adminPassword: 'admin123',
         newUser: {
             name: formData.get('name'),
             role: 'participant',
@@ -30,6 +30,7 @@ document.getElementById('participant-form').addEventListener('submit', async fun
         if (response.ok) {
             alert(`Usuario creado exitosamente con ID: ${result.insertedId}`);
             this.reset(); // Limpia el formulario
+            window.location.href = '/admin/index.html';
         } else {
             alert(`Error: ${result.message}`);
         }

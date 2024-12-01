@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         alert('Ocurrió un error al cargar los datos del participante.');
     }
 
-    document.getElementById('modificar-participante').addEventListener('submit', async (event) => {
+    document.getElementById('modificar-guia').addEventListener('submit', async (event) => {
         event.preventDefault();
 
         const updatedFields = {
@@ -48,13 +48,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             if (response.ok) {
                 alert('Participante modificado exitosamente.');
-                window.location.href = '/admin/adminParticipants-Guides/consultaParticipante.html';
+                window.location.href = '/admin/adminParticipants-Guides/consultaGuia.html';
             } else {
                 alert(`Error: ${result.message}`);
             }
         } catch (error) {
-            console.error('Error al actualizar el participante:', error);
-            alert('Ocurrió un error al actualizar el participante.');
+            console.error('Error al actualizar el guia:', error);
+            alert('Ocurrió un error al actualizar el guia.');
         }
     });
 });
