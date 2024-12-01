@@ -72,7 +72,7 @@ app.post('/api/users', async (req, res) => {
 
 const { modifyDocument } = require('./methods.js');
 
-//Endpoint para modificar un participante
+//Endpoint para modificar un Usuario
 app.put('/api/participantes', async (req, res) => {
     const { id, name, avatar } = req.body;
 
@@ -95,7 +95,7 @@ app.put('/api/participantes', async (req, res) => {
             res.status(404).json(resultado);
         }
     } catch (error) {
-        console.error('Error al actualizar el participante:', error);
+        console.error('Error al actualizar el Usuario:', error);
         res.status(500).json({ success: false, message: 'Error interno del servidor' });
     }
 });
@@ -112,6 +112,42 @@ app.get('/api/participantes', async (req, res) => {
         res.status(500).json({ success: false, message: 'Error al obtener la lista de participantes' });
     }
 });
+
+// Endpoint para obtener la lista de guias
+app.get('/api/guias', async (req, res) => {
+    try {
+        const usuarios = db.collection('users'); // Colección de usuarios
+        const participantes = await usuarios.find({ role: 'guide' }).toArray(); // Filtra por rol 'participant'
+
+        res.status(200).json(participantes); // Envía la lista de participantes como respuesta JSON
+    } catch (error) {
+        console.error('Error al obtener la lista de participantes:', error);
+        res.status(500).json({ success: false, message: 'Error al obtener la lista de participantes' });
+    }
+});
+
+app.get('/api/participantes/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        // Valida si el ID es un ObjectId válido
+        if (!ObjectId.isValid(id)) {
+            return res.status(400).json({ success: false, message: 'ID inválido' });
+        }
+
+        const participante = await db.collection('users').findOne({ _id: new ObjectId(id) });
+
+        if (!participante) {
+            return res.status(404).json({ success: false, message: 'Participante no encontrado' });
+        }
+
+        res.status(200).json(participante);
+    } catch (error) {
+        console.error('Error al obtener el participante:', error);
+        res.status(500).json({ success: false, message: 'Error interno del servidor' });
+    }
+});
+
 
 const { ObjectId } = require('mongodb');
 
@@ -131,12 +167,12 @@ app.delete('/api/participantes/:id', async (req, res) => {
         const resultado = await usuarios.deleteOne({ _id: new ObjectId(id) });
 
         if (resultado.deletedCount === 0) {
-            return res.status(404).json({ success: false, message: 'Participante no encontrado' });
+            return res.status(404).json({ success: false, message: 'Usuario no encontrado' });
         }
 
-        res.status(200).json({ success: true, message: 'Participante eliminado exitosamente' });
+        res.status(200).json({ success: true, message: 'Usuario eliminado exitosamente' });
     } catch (error) {
-        console.error('Error al eliminar el participante:', error);
+        console.error('Error al eliminar el Usuario:', error);
         res.status(500).json({ success: false, message: 'Error interno del servidor' });
     }
 });
@@ -162,6 +198,80 @@ app.post('/api/guias', async (req, res) => {
         res.status(500).json({ success: false, message: 'Error interno del servidor' });
     }
 });
+
+app.post('/api/recorridos', async (req, res) => {
+    const { nombre, duracion, fecha, guias, zonas, participantes } = req.body;
+
+    try {
+        const recorridosCollection = db.collection('recorridos');
+        const usersCollection = db.collection('users');
+        const zonasCollection = db.collection('zonas');
+
+        // Insertar el recorrido
+        const resultado = await recorridosCollection.insertOne({
+            nombre,
+            duracion,
+            fecha: new Date(fecha),
+            guias,
+            zonas,
+            participantes
+        });
+
+        const recorridoId = resultado.insertedId;
+
+        // Actualizar los guías y participantes con la referencia al recorrido
+        const updateUserRecorridos = async (collection, ids) => {
+            for (const id of ids) {
+                await collection.updateOne(
+                    { _id: new ObjectId(id) },
+                    { $push: { recorridos: recorridoId } },
+                    { upsert: true }
+                );
+            }
+        };
+
+        await updateUserRecorridos(usersCollection, guias);
+        await updateUserRecorridos(usersCollection, participantes);
+
+        res.status(201).json({ insertedId: recorridoId });
+    } catch (error) {
+        console.error('Error al crear el recorrido:', error);
+        res.status(500).json({ message: 'Error al registrar el recorrido' });
+    }
+});
+
+app.post('/api/zonas', async (req, res) => {
+    const { nombre, descripcion } = req.body;
+
+    try {
+        if (!nombre || !descripcion) {
+            return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
+        }
+
+        const zonasCollection = db.collection('zonas'); // Asegúrate de usar el nombre correcto de la colección
+
+        // Inserta la nueva zona geográfica en la base de datos
+        const resultado = await zonasCollection.insertOne({ nombre, descripcion });
+
+        res.status(201).json({ insertedId: resultado.insertedId });
+    } catch (error) {
+        console.error('Error al crear la zona geográfica:', error);
+        res.status(500).json({ message: 'Error interno del servidor al guardar la zona.' });
+    }
+});
+
+app.get('/api/zonas', async (req, res) => {
+    try {
+        const zonasCollection = db.collection('zonas'); // Colección de zonas geográficas
+        const zonas = await zonasCollection.find().toArray(); // Obtiene todas las zonas como un array
+
+        res.status(200).json(zonas); // Devuelve las zonas en formato JSON
+    } catch (error) {
+        console.error('Error al consultar las zonas geográficas:', error);
+        res.status(500).json({ message: 'Error interno del servidor al consultar las zonas.' });
+    }
+});
+
 
 
 // Inicializa la conexión y el servidor

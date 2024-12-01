@@ -28,8 +28,9 @@ document.getElementById('guide-form').addEventListener('submit', async function 
         const result = await response.json();
 
         if (response.ok) {
-            alert(`Usuario creado exitosamente con ID: ${result.insertedId}`);
+            alert(`Guia creado exitosamente con ID: ${result.insertedId}`);
             this.reset(); // Limpia el formulario
+            window.location.href = '/admin/index.html';
         } else {
             alert(`Error: ${result.message}`);
         }

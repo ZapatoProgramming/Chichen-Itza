@@ -236,3 +236,18 @@ form {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para resaltar */
     text-align: center; /* Centra el texto */
 }
+
+.gestion-participantes,
+.gestion-guias {
+    margin: 20px 0;
+}
+
+select[multiple] {
+    height: auto; /* Ajusta automáticamente la altura */
+    min-height: 100px; /* Altura mínima para una buena visualización */
+    overflow-y: auto; /* Permite el scroll si hay muchas opciones */
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 16px;
+    padding: 5px;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Modificación de Guia</title>
+    <link rel="stylesheet" href="../../../styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Modificación de Guia</h2>
+        <form id="modificar-guia">
+
+            <label for="id">ID:</label>
+            <p id="id-display" style="font-weight: bold; margin-bottom: 10px;"></p>
+
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" placeholder="Ingrese el nombre">
+
+            <label for="avatar">Avatar:</label>
+            <select id="avatar" name="avatar">
+                <option value="avatar1">Avatar 1</option>
+                <option value="avatar2">Avatar 2</option>
+                <option value="avatar3">Avatar 3</option>
+            </select>
+
+            <button type="submit" class="submit-button">Guardar Cambios</button>
+        </form>
+    </div>
+    <script src="modifyGuide.js"></script>
+</body>
+</html>

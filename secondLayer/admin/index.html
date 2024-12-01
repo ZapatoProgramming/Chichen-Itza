@@ -26,14 +26,28 @@
         <section id="administracion-usuarios">
             <h2>Administración de Participantes y Guías</h2>
             <p>Gestiona la inscripción, roles y asignación de recorridos para los participantes y guías.</p>
-            <button class="btn-gestion" onclick="window.location.href='/admin/adminParticipants-Guides/registerParticipant.html'">Registrar Participante</button>
-            <button class="btn-gestion" onclick="window.location.href='/admin/adminParticipants-Guides/modifyParticipant.html'">Modificar Participante</button>
-            <button class="btn-gestion" onclick="window.location.href='/admin/adminParticipants-Guides/deleteParticipante.html'">Eliminar Participante</button>
-            <button class="btn-gestion" onclick="window.location.href='/admin/adminParticipants-Guides/consultaParticipante.html'">Consultar Participantes</button>
-            <button class="btn-gestion" onclick="window.location.href='/admin/adminParticipants-Guides/registerGuide.html'">Registrar Guía</button>
-            <button class="btn-gestion" onclick="window.location.href='/admin/adminParticipants-Guides/modifyGuide.html'">Modificar Guía</button>
-            <button class="btn-gestion" onclick="window.location.href='/admin/adminParticipants-Guides/deleteGuide.html'">Eliminar Guía</button>
-            <button class="btn-gestion" onclick="window.location.href='/admin/adminParticipants-Guides/consultaGuia.html'">Consultar Guía</button>
+            
+            <!-- Botones de Participantes -->
+            <div class="gestion-participantes">
+                <h3>Participantes</h3>
+                <button class="btn-gestion" onclick="window.location.href='/admin/adminParticipants-Guides/participant/registerParticipant.html'">
+                    Registrar Participante
+                </button>
+                <button class="btn-gestion" onclick="window.location.href='/admin/adminParticipants-Guides/participant/consultaParticipante.html'">
+                    Consultar Participantes
+                </button>
+            </div>
+            
+            <!-- Botones de Guías -->
+            <div class="gestion-guias">
+                <h3>Guías</h3>
+                <button class="btn-gestion" onclick="window.location.href='/admin/adminParticipants-Guides/guide/registerGuide.html'">
+                    Registrar Guía
+                </button>
+                <button class="btn-gestion" onclick="window.location.href='/admin/adminParticipants-Guides/guide/consultaGuia.html'">
+                    Consultar Guía
+                </button>
+            </div>
         </section>
 
         <!-- Sección de Gestión de Zonas Geográficas -->
@@ -46,18 +60,11 @@
             <button class="btn-gestion" onclick="window.location.href='/admin/geograficZones/queryGeograficZone.html'">Lista de Zonas</button>
         </section>
 
-        <!-- Sección de Estadísticas y Reportes -->
-        <section id="estadisticas">
-            <h2>Estadísticas y Reportes</h2>
-            <p>Genera reportes sobre los recorridos, el número de participantes y el desempeño de los guías.</p>
-            <button class="btn-gestion" onclick="window.location.href='statistics-report.html'">Generar Reporte</button>
-        </section>
     </main>
 
     <footer>
         <p>&copy; 2024 Plataforma de Recorridos Virtuales. Todos los derechos reservados.</p>
     </footer>
-    <script src="methods.js"></script>
 </body>
 </html>
 

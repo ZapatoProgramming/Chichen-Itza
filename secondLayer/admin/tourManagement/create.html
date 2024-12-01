@@ -18,14 +18,24 @@
             <label for="fecha">Fecha y Hora:</label>
             <input type="datetime-local" id="fecha" name="fecha" required>
 
-            <label for="guias">Guía(s):</label>
-            <select id="guias" name="guias" multiple required></select>
-            
-            <label for="zonas">Zonas:</label>
-            <select id="zonas" name="zonas" multiple required></select>            
+            <fieldset>
+                <legend>Guías</legend>
+                <div id="guias-container"></div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Zonas</legend>
+                <div id="zonas-container"></div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Participantes</legend>
+                <div id="participantes-container"></div>
+            </fieldset>
 
             <button type="submit" class="submit-button">Crear Recorrido</button>
         </form>
     </div>
+    <script src="create.js" type="module"></script>
 </body>
 </html>
