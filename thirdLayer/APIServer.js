@@ -199,6 +199,80 @@ app.post('/api/guias', async (req, res) => {
     }
 });
 
+app.post('/api/recorridos', async (req, res) => {
+    const { nombre, duracion, fecha, guias, zonas, participantes } = req.body;
+
+    try {
+        const recorridosCollection = db.collection('recorridos');
+        const usersCollection = db.collection('users');
+        const zonasCollection = db.collection('zonas');
+
+        // Insertar el recorrido
+        const resultado = await recorridosCollection.insertOne({
+            nombre,
+            duracion,
+            fecha: new Date(fecha),
+            guias,
+            zonas,
+            participantes
+        });
+
+        const recorridoId = resultado.insertedId;
+
+        // Actualizar los guías y participantes con la referencia al recorrido
+        const updateUserRecorridos = async (collection, ids) => {
+            for (const id of ids) {
+                await collection.updateOne(
+                    { _id: new ObjectId(id) },
+                    { $push: { recorridos: recorridoId } },
+                    { upsert: true }
+                );
+            }
+        };
+
+        await updateUserRecorridos(usersCollection, guias);
+        await updateUserRecorridos(usersCollection, participantes);
+
+        res.status(201).json({ insertedId: recorridoId });
+    } catch (error) {
+        console.error('Error al crear el recorrido:', error);
+        res.status(500).json({ message: 'Error al registrar el recorrido' });
+    }
+});
+
+app.post('/api/zonas', async (req, res) => {
+    const { nombre, descripcion } = req.body;
+
+    try {
+        if (!nombre || !descripcion) {
+            return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
+        }
+
+        const zonasCollection = db.collection('zonas'); // Asegúrate de usar el nombre correcto de la colección
+
+        // Inserta la nueva zona geográfica en la base de datos
+        const resultado = await zonasCollection.insertOne({ nombre, descripcion });
+
+        res.status(201).json({ insertedId: resultado.insertedId });
+    } catch (error) {
+        console.error('Error al crear la zona geográfica:', error);
+        res.status(500).json({ message: 'Error interno del servidor al guardar la zona.' });
+    }
+});
+
+app.get('/api/zonas', async (req, res) => {
+    try {
+        const zonasCollection = db.collection('zonas'); // Colección de zonas geográficas
+        const zonas = await zonasCollection.find().toArray(); // Obtiene todas las zonas como un array
+
+        res.status(200).json(zonas); // Devuelve las zonas en formato JSON
+    } catch (error) {
+        console.error('Error al consultar las zonas geográficas:', error);
+        res.status(500).json({ message: 'Error interno del servidor al consultar las zonas.' });
+    }
+});
+
+
 
 // Inicializa la conexión y el servidor
 initializeServer();

@@ -241,3 +241,13 @@ form {
 .gestion-guias {
     margin: 20px 0;
 }
+
+select[multiple] {
+    height: auto; /* Ajusta automáticamente la altura */
+    min-height: 100px; /* Altura mínima para una buena visualización */
+    overflow-y: auto; /* Permite el scroll si hay muchas opciones */
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 16px;
+    padding: 5px;
+}

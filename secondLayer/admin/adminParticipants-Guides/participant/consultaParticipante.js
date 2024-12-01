@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const listaRecorridos = document.getElementById('guia-recorridos');
+    const listaRecorridos = document.getElementById('participante-recorridos');
 
     try {
         // Realiza la solicitud al endpoint
-        const response = await fetch('http://localhost:3001/api/guias');
+        const response = await fetch('http://localhost:3001/api/participantes');
         
         if (!response.ok) {
             throw new Error('Error al obtener los participantes');
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             button.addEventListener('click', (event) => {
                 const participanteId = event.target.getAttribute('data-id');
                 // Abre la página de modificación con el ID del participante como parámetro en la URL
-                window.location.href = `/admin/adminParticipants-Guides/modifyGuide.html?id=${participanteId}`;
+                window.location.href = `/admin/adminParticipants-Guides/participant/modifyParticipant.html?id=${participanteId}`;
             });
         });
 
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             button.addEventListener('click', async (event) => {
                 const participanteId = event.target.getAttribute('data-id');
 
-                if (confirm('¿Estás seguro de que deseas eliminar este guia?')) {
+                if (confirm('¿Estás seguro de que deseas eliminar este participante?')) {
                     try {
                         const deleteResponse = await fetch(`http://localhost:3001/api/participantes/${participanteId}`, {
                             method: 'DELETE'
